@@ -1,0 +1,27 @@
+- var colors = ['#ffeb3b', '#ff5722', '#4caf50', '#1e88e5', '#673ab7', '#8d6e63']
+
+.area
+  .help
+    button(id="help" aria-label="help" onClick="toggle(this)") &quest;
+    ul
+      li Fill the board with a single color;
+      li It will fill from top left to bottom right;
+      li Try to make a lower score. The lower, the best.
+
+  .options
+    button(id="new-game" onClick="resetGame()") New Game
+    div(id="score" class="score" title="Color changes") 00
+    label(for="difficulty")
+      select(id="#difficulty" aria-label="Difficulty" onChange="changeDifficulty(this)")
+        option(value="1" selected) Easy
+        option(value="2") Medium
+        option(value="3") Hard
+        option(value="4") Very Hard
+
+  div(id="screen" class="board")
+    canvas(id="canvas" class="canvas")
+
+  .buttons
+    each color in colors
+      button(style='color:'+color data-color=color onclick='chooseColor(this)')
+        span #{color}
